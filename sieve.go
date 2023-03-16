@@ -50,11 +50,11 @@ func TwinPrimes(n uint) []uint {
 	}
 
 	var twins []uint
-	for p:=0; uint(p)<n; p++ {
-		if(isPrime[p]&&isPrime[p+2]){
-			twins = append(twins, uint(p))
-		}else if(isPrime[p]&&isPrime[p-2]){
-			twins = append(twins, uint(p))
+	for t:=0; uint(t)<n; t++ {
+		if(isPrime[t]&&isPrime[t+2]){
+			twins = append(twins, uint(t))
+		}else if(isPrime[t]&&isPrime[t-2]){
+			twins = append(twins, uint(t))
 		}
 	}
 	return twins
