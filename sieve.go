@@ -31,3 +31,7 @@ func SieveOfEratosthenes(n uint) []uint {
 
 	return primes
 }
+
+func TwinPrimes(n){
+
+}
