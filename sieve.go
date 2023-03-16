@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(SieveOfEratosthenes(20))
+	fmt.Println(SieveOfEratosthenes(101))
+	fmt.Println(TwinPrimes(101))
 }
 
 func SieveOfEratosthenes(n uint) []uint {
@@ -12,10 +13,11 @@ func SieveOfEratosthenes(n uint) []uint {
 	for i := 0; uint(i) <=n; i++ {
 		isPrime[i] = true
 	}
+
 	for j, v := range isPrime {
 		if v {
 			j+=2
-			for k := uint(2); uint(j)*uint(k) <=n; k+=uint(j) {
+			for k := uint(2); uint(j)*uint(k) <=n; k++ {
 				isPrime[uint(j)*k] = false
 			}
 		}
@@ -23,16 +25,24 @@ func SieveOfEratosthenes(n uint) []uint {
 
 	var primes []uint
 	for p, _ := range isPrime {
-		if(isPrime[p]==true){
+		if(isPrime[p]){
 			primes = append(primes, uint(p))
 		}
 		
 	}
-//	TwinPrimes(primes)
 	return primes
 }
 
-//func TwinPrimes([]uint) []uint{
+func TwinPrimes(n uint) []uint{
+	primes:=SieveOfEratosthenes(n)
+	var twins []uint
+	
 
-//}
+	for t, _ := range primes {
+		if((primes[t]+2)==primes[t+1]){
+			primes = append(twins, uint(t))
+		}
+	}
+	return twins
+}
 
