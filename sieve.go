@@ -33,14 +33,28 @@ func SieveOfEratosthenes(n uint) []uint {
 	return primes
 }
 
-func TwinPrimes(n uint) []uint{
-	primes:=SieveOfEratosthenes(n)
-	var twins []uint
+func TwinPrimes(n uint) []uint {
+	isPrime:=make([]bool, n+1)
 	
+	for i := 0; uint(i) <=n; i++ {
+		isPrime[i] = true
+	}
 
-	for t, _ := range primes {
-		if((primes[t]+2)==primes[t+1]){
-			primes = append(twins, uint(t))
+	for j, v := range isPrime {
+		if v {
+			j+=2
+			for k := uint(2); uint(j)*uint(k) <=n; k++ {
+				isPrime[uint(j)*k] = false
+			}
+		}
+	}
+
+	var twins []uint
+	for p:=0; uint(p)<n; p++ {
+		if(isPrime[p]&&isPrime[p+2]){
+			twins = append(twins, uint(p))
+		}else if(isPrime[p]&&isPrime[p-2]){
+			twins = append(twins, uint(p))
 		}
 	}
 	return twins
