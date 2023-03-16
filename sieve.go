@@ -26,7 +26,7 @@ func SieveOfEratosthenes(n uint) []uint {
 
 	var primes []uint
 	for p, _ := range isPrime {
-		primes = append(primes, uint(p+1))
+		primes = append(primes, uint(p))
 	}
 
 	return primes
