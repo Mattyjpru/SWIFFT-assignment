@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(SieveOfEratosthenes(3))
+	fmt.Println(SieveOfEratosthenes(20))
 }
 
 func SieveOfEratosthenes(n uint) []uint {
@@ -12,11 +12,10 @@ func SieveOfEratosthenes(n uint) []uint {
 	for i := 0; uint(i) <=n; i++ {
 		isPrime[i] = true
 	}
-	isPrime[0] = true
-	isPrime[1] = true
 	for j, v := range isPrime {
-		if v==true{
-			for k := uint(2); uint(j)*uint(k) <= n; k++ {
+		if v {
+			j+=2
+			for k := uint(2); uint(j)*uint(k) <=n; k+=uint(j) {
 				isPrime[uint(j)*k] = false
 			}
 		}
@@ -37,4 +36,3 @@ func SieveOfEratosthenes(n uint) []uint {
 
 //}
 
-//
