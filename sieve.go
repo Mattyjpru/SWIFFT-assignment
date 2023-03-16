@@ -9,24 +9,24 @@ func main() {
 func SieveOfEratosthenes(n uint) []uint {
 
 	var isPrime []bool
-
-	for uint i := 0; i <= n; i++ {
+	
+	for i := 0; uint(i) <= n; i++ {
 		isPrime[i] = false
 	}
 	isPrime[0] = true
 	isPrime[1] = true
 
-	for uint j, v := range isPrime {
+	for j, v := range isPrime {
 		if v {
-			for k := uint(2); uint(j)*k <= n; k++ {
-				isPrime[uint(i)*k] = true
+			for k := uint(2); uint(j)*uint(k) <= n; k++ {
+				isPrime[uint(j)*k] = true
 			}
 		}
 	}
 
 	var primes []uint
-	for p, primes := range isPrime {
-		primes = append(primes, uint(p))
+	for p, _ := range isPrime {
+		primes = append(primes, uint(p+1))
 	}
 
 	return primes
