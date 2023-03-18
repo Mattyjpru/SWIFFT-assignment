@@ -4,8 +4,10 @@ import "fmt"
 
 func main() {
 	fmt.Println(SieveOfEratosthenes(101))
-	fmt.Println(TwinPrimes(100001))
-	fmt.Println(modTest(1000001))
+	fmt.Println(TwinPrimes(101))
+	fmt.Println(modTest(101))
+	fmt.Println(testPrimesIter(1001))
+	fmt.Println(testTwinPrimesIter(1001))
 }
 
 func SieveOfEratosthenes(n uint) []uint {
@@ -60,7 +62,7 @@ func TwinPrimes(n uint) []uint {
 }
 
 func modTest(n uint) int {
-	var flag int
+	var flag =0
 
 	primes:=SieveOfEratosthenes(n)
 	for i:=0; i<len(primes); i++{
@@ -178,12 +180,24 @@ func testPrimesIter(n uint) int{
 		7687, 7691, 7699, 7703, 7717, 7723, 7727, 7741, 7753, 7757, 7759, 
 		7789, 7793, 7817, 7823, 7829, 7841, 7853, 7867, 7873, 7877, 7879, 
 		7883, 7901, 7907, 7919}
-	return 0
+		mylist := SieveOfEratosthenes(n)
+		var flag =0
+		for i:=0; i<len(mylist); i++{
+			for j:=2; j<i; j++ {
+				if(mylist[i]!=primeList1[i]){
+					fmt.Print(mylist[i])
+					fmt.Print("    ")
+					fmt.Print(primeList1[i])
+					flag=1
+				}
+			}
+		}
+	return flag
 }
 
 
 func testTwinPrimesIter(n uint) int{
-	twinPrimeList:= []uint {3, 5, 7, 11, 13, 7, 19, 29, 31, 41, 43,59, 61, 
+	twinPrimeList:= []uint {3, 5, 7, 11, 13, 17, 19, 29, 31, 41, 43,59, 61, 
 		71, 73,101, 103,107, 109,137, 139, 149, 151, 179, 181, 
 		191, 193, 197, 199, 227, 229, 239, 241, 269, 271, 281, 283, 
 		311, 313, 347, 349, 419, 421, 431, 433, 461, 463, 521, 523, 
@@ -225,5 +239,17 @@ func testTwinPrimesIter(n uint) int{
 		9767, 9769, 9857, 9859, 9929, 9931, 10007, 10009, 10037, 10039, 
 		10067, 10069, 10091, 10093, 10139, 10141, 10271, 10273, 10301, 
 		10303, 10331, 10333, 10427, 10429}
-	return 0
+		mylist := TwinPrimes(n)
+		var flag =0
+		for i:=0; i<len(mylist); i++{
+			for j:=2; j<i; j++ {
+				if(mylist[i]!=twinPrimeList[i]){
+					fmt.Print(mylist[i])
+					fmt.Print("    ")
+					fmt.Print(twinPrimeList[i])
+					flag=1
+				}
+			}
+		}
+	return flag
 }
